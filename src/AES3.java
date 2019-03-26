@@ -14,7 +14,7 @@ public class AES3 implements IDecrypter, IEncrypter{
     public PlainText Decrypt(CipherText cypherText) {
         CipherText curr = cypherText;
         for(int i = 0; i < 3; i++)
-            curr = new CipherText(aes.get(aes.size()-i).Decrypt(curr));
+            curr = new CipherText(aes.get(aes.size()- i - 1).Decrypt(curr));
 
         return new PlainText(curr);
     }
