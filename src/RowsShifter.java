@@ -11,6 +11,11 @@ public class RowsShifter {
         }
         return ans;
     }
+
+    public static Block128 shiftRows(Block128 block128) {
+        return new Block128(shiftRows(block128.getBytes()));
+    }
+
     public static void test(){
         byte[][] test=new byte[4][4];
         int counter=0;
