@@ -28,6 +28,22 @@ public class Block128 {
         return blocks;
     }
 
+    public static byte[] toByteArray(ArrayList<Block128> blocks){
+        byte[] bytes = new byte[blocks.size() * 16];
+        int pos = 0;
+
+        for(Block128 curr : blocks){
+            for(int i = 0; i < curr.bytes.length; i++){
+                for(int j = 0; j < curr.bytes.length; j++){
+                    bytes[pos] = curr.bytes[i][j];
+                    pos++;
+                }
+            }
+        }
+
+        return bytes;
+    }
+
     @Override
     public boolean equals(Object o){
         if(!(o instanceof Block128))
