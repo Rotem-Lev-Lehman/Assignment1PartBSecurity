@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public  abstract class Text {
-    ArrayList<Block128> blocks;
+    private ArrayList<Block128> blocks;
 
     public Text() {
         this.blocks = new ArrayList<>();

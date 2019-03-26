@@ -1,4 +1,5 @@
 public class RowsShifter {
+
     public static byte[][] shiftRows(byte[][] arr){
         return shift(arr,true);
     }
