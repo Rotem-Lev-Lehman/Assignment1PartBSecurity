@@ -19,7 +19,8 @@ public class Block128 {
             byte[][] bytes = new byte[4][4];
             for(int j = 0; j < bytes.length; j++){
                 for(int k = 0; k < bytes[j].length; k++){
-                    bytes[j][k] = text[i*16 + j*4 + k];
+                    //bytes[j][k] = text[i*16 + j*4 + k];
+                    bytes[j][k] = text[i*16 + k*4 + j];
                 }
             }
             Block128 curr = new Block128(bytes);
@@ -35,7 +36,8 @@ public class Block128 {
         for(Block128 curr : blocks){
             for(int i = 0; i < curr.bytes.length; i++){
                 for(int j = 0; j < curr.bytes.length; j++){
-                    bytes[pos] = curr.bytes[i][j];
+                    //bytes[pos] = curr.bytes[i][j];
+                    bytes[pos] = curr.bytes[j][i];
                     pos++;
                 }
             }
