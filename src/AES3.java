@@ -12,12 +12,13 @@ public class AES3 implements IDecrypter, IEncrypter{
     }
 
     @Override
-    public byte[] Decrypt(byte[] cypherText) {
+    public PlainText Decrypt(CipherText cypherText) {
         throw new NotImplementedException();
     }
 
     @Override
-    public byte[] Encrypt(byte[] message) {
+    public CipherText Encrypt(PlainText message) {
+
         throw new NotImplementedException();
     }
 }

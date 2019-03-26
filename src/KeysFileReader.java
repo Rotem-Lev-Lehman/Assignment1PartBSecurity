@@ -1,3 +1,5 @@
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
@@ -13,5 +15,7 @@ public class KeysFileReader extends MyFileReader {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        throw new NotImplementedException();
+
     }
 }
