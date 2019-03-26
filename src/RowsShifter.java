@@ -1,19 +1,35 @@
 public class RowsShifter {
     public static byte[][] shiftRows(byte[][] arr){
+        return shift(arr,true);
+    }
+
+    public static byte[][] shiftRowsBackwards(byte[][] arr){
+        return shift(arr,false);
+    }
+
+    public static Block128 shiftRows(Block128 block128) {
+        return new Block128(shiftRows(block128.getBytes()));
+    }
+
+    public static Block128 shiftRowsBackwards(Block128 block128) {
+        return new Block128(shiftRowsBackwards(block128.getBytes()));
+    }
+
+    private static byte[][] shift(byte[][] arr,boolean forward){
         byte[][] ans=new byte[arr.length][arr[0].length];
         for(int rowNum=0;rowNum<ans.length;rowNum++){
             for (int colNum=0;colNum<ans[0].length;colNum++){
-                int takeFrom=colNum+rowNum;
+                int takeFrom;
+                if(forward)
+                    takeFrom=colNum+rowNum;
+                else
+                    takeFrom=colNum-rowNum;
                 if(takeFrom>=ans[0].length)
                     takeFrom=takeFrom-ans[0].length;
                 ans[rowNum][colNum]=arr[rowNum][takeFrom];
             }
         }
         return ans;
-    }
-
-    public static Block128 shiftRows(Block128 block128) {
-        return new Block128(shiftRows(block128.getBytes()));
     }
 
     public static void test(){
