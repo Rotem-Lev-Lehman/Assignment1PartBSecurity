@@ -9,7 +9,11 @@ public class AES3Breaker {
         keys.add(key1);
         key2=getRandomKey();
         keys.add(key2);
-
+        ArrayList<Block128> afterFirst,afterSecond;
+        afterFirst=shiftNxor(pt.getBlocks(),key1);
+        afterSecond=shiftNxor(afterFirst,key1);
+        key3=new Key(XORcerer.XOR(afterSecond.get(0),ct.getBlocks().get(0)));
+        keys.add(key3);
         return keys;
     }
 
@@ -21,5 +25,15 @@ public class AES3Breaker {
             }
         }
         return new Key(new Block128(bytes));
+    }
+
+    private static ArrayList<Block128> shiftNxor(ArrayList<Block128> blocks,Key key){
+        ArrayList<Block128> ans=new ArrayList<>();
+        for (Block128 block:blocks) {
+            Block128 newOne=RowsShifter.shiftRows(block);
+            newOne= XORcerer.XOR(newOne,key.getBytes());
+            ans.add(newOne);
+        }
+        return ans;
     }
 }
