@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Block128 {
     byte[][] bytes;
 
@@ -7,6 +9,10 @@ public class Block128 {
 
     public byte[][] getBytes() {
         return bytes;
+    }
+
+    public static ArrayList<Block128> generateBlocks(byte[] text){
+
     }
 
     @Override

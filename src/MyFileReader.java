@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class MyFileReader {
     protected String path;
     public MyFileReader(String path) {
@@ -7,5 +9,5 @@ public abstract class MyFileReader {
     /**
      * @return the content of the file (in byte array)
      */
-    public abstract byte[] readFile();
+    public abstract ArrayList<Block128> readFile();
 }
