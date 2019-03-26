@@ -1,12 +1,8 @@
 public class AES1 implements IDecrypter, IEncrypter {
-    private Key k1;
-    private Key k2;
-    private Key k3;
+    private Key k;
 
-    public AES1(Key k1, Key k2, Key k3) {
-        this.k1 = k1;
-        this.k2 = k2;
-        this.k3 = k3;
+    public AES1(Key k) {
+        this.k = k;
     }
 
     @Override
@@ -16,6 +12,10 @@ public class AES1 implements IDecrypter, IEncrypter {
 
     @Override
     public CipherText Encrypt(PlainText message) {
-        return null;
+        CipherText cipherText = new CipherText();
+
+        for (Block128 block : message.getBlocks()) {
+            cipherText.addBlock(XORcerer.XOR(RowsShifter.shiftRows(block),k.getBytes()));
+        }
     }
 }

@@ -8,4 +8,8 @@ public class PlainText extends Text {
     public PlainText(CipherText cipherText) {
         super(cipherText.getBlocks());
     }
+
+    public PlainText() {
+        super();
+    }
 }

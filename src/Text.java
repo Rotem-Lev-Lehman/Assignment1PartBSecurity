@@ -3,6 +3,10 @@ import java.util.ArrayList;
 public  abstract class Text {
     ArrayList<Block128> blocks;
 
+    public Text() {
+        this.blocks = new ArrayList<>();
+    }
+
     public Text(ArrayList<Block128> blocks) {
         this.blocks = blocks;
     }
