@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Assignment1PartBSecurity:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Assignment1PartBSecurity_jar</output-path>
+    <root id="archive" name="Assignment1PartBSecurity.jar">
+      <element id="module-output" name="Assignment1PartBSecurity" />
+    </root>
+  </artifact>
+</component>
