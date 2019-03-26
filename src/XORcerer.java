@@ -1,4 +1,6 @@
 public class XORcerer {
+
+
     public static byte[][] XOR(byte[][] first,byte[][] second){
         if(first.length!=second.length || first[0].length!=second[0].length)
             return null;
@@ -9,5 +11,9 @@ public class XORcerer {
             }
         }
         return ans;
+    }
+
+    public static Block128 XOR(Block128 first, Block128 second) {
+        return new Block128(XOR(first.getBytes(), second.getBytes()));
     }
 }
