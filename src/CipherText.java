@@ -5,4 +5,7 @@ public class CipherText extends Text{
         super(blocks);
     }
 
+    public CipherText(PlainText plainText) {
+        super(plainText.getBlocks());
+    }
 }

@@ -1,24 +1,25 @@
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 public class AES3 implements IDecrypter, IEncrypter{
-    private Key k1;
-    private Key k2;
-    private Key k3;
+    private AES1 aes1;
 
     public AES3(Key k1, Key k2, Key k3) {
-        this.k1 = k1;
-        this.k2 = k2;
-        this.k3 = k3;
+        this.aes1 = new AES1(k1,k2,k3);
     }
 
     @Override
     public PlainText Decrypt(CipherText cypherText) {
-        throw new NotImplementedException();
+        CipherText curr = cypherText;
+        for(int i = 0; i < 3; i++)
+            curr = new CipherText(aes1.Decrypt(curr));
+
+        return new PlainText(curr);
     }
 
     @Override
     public CipherText Encrypt(PlainText message) {
+        PlainText curr = message;
+        for(int i = 0; i < 3; i++)
+            curr = new PlainText(aes1.Encrypt(curr));
 
-        throw new NotImplementedException();
+        return new CipherText(curr);
     }
 }
