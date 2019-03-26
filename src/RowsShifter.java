@@ -21,12 +21,16 @@ public class RowsShifter {
         for(int rowNum=0;rowNum<ans.length;rowNum++){
             for (int colNum=0;colNum<ans[0].length;colNum++){
                 int takeFrom;
-                if(forward)
+                if(forward){
                     takeFrom=colNum+rowNum;
-                else
+                    if(takeFrom>=ans[0].length)
+                        takeFrom=takeFrom-ans[0].length;
+                }
+                else{
                     takeFrom=colNum-rowNum;
-                if(takeFrom>=ans[0].length)
-                    takeFrom=takeFrom-ans[0].length;
+                    if(takeFrom<0)
+                        takeFrom=ans[0].length+takeFrom;
+                }
                 ans[rowNum][colNum]=arr[rowNum][takeFrom];
             }
         }

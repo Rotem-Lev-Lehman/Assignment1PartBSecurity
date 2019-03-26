@@ -10,12 +10,12 @@ public class Main {
             else if(!(args[0].equals("-e") || args[0].equals("-d") || args[0].equals("-b")))
                 System.out.println("Wrong arguments");
             else if(args[0].equals("-e") || args[0].equals("-d")){
-                BlocksFileReader keys=new BlocksFileReader(args[3]);
+                BlocksFileReader keys=new BlocksFileReader(args[2]);
                 ArrayList<Block128> keysBlocks=keys.readFile();
                 Key key1=new Key(keysBlocks.get(0));
                 Key key2=new Key(keysBlocks.get(1));
                 Key key3=new Key(keysBlocks.get(2));
-                BlocksFileReader input=new BlocksFileReader(args[5]);
+                BlocksFileReader input=new BlocksFileReader(args[4]);
                 AES3 aes3=new AES3(key1,key2,key3);
                 ArrayList<Block128> ans;
                 if(args[0].equals("-e")){
@@ -28,13 +28,13 @@ public class Main {
                     PlainText pt=aes3.Decrypt(ct);
                     ans=pt.getBlocks();
                 }
-                BlocksFileWriter output=new BlocksFileWriter(args[7]);
+                BlocksFileWriter output=new BlocksFileWriter(args[6]);
                 output.writeToFile(ans);
                 System.out.println("Operation Completed successfully!");
             }
             else if(args[0].equals("-b")){
-                BlocksFileReader ptBytes=new BlocksFileReader(args[3]);
-                BlocksFileReader ctBytes=new BlocksFileReader(args[5]);
+                BlocksFileReader ptBytes=new BlocksFileReader(args[2]);
+                BlocksFileReader ctBytes=new BlocksFileReader(args[4]);
                 PlainText pt=new PlainText(ptBytes.readFile());
                 CipherText ct=new CipherText(ctBytes.readFile());
                 ArrayList<Key> keys=AES3Breaker.getKeys(pt,ct);
@@ -42,13 +42,13 @@ public class Main {
                 for (Key key:keys) {
                     ans.add(key.getBytes());
                 }
-                BlocksFileWriter output=new BlocksFileWriter(args[7]);
+                BlocksFileWriter output=new BlocksFileWriter(args[6]);
                 output.writeToFile(ans);
                 System.out.println("Operation Completed successfully!");
             }
         }
         catch(Exception e){
-            System.out.println("Wrong arguments");
+            e.printStackTrace();
         }
     }
 
