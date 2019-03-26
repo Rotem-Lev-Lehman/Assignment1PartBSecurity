@@ -12,7 +12,20 @@ public class Block128 {
     }
 
     public static ArrayList<Block128> generateBlocks(byte[] text){
+        int amount = text.length / 16;
+        ArrayList<Block128> blocks = new ArrayList<>(amount);
 
+        for(int i = 0; i < amount; i++){
+            byte[][] bytes = new byte[4][4];
+            for(int j = 0; j < bytes.length; j++){
+                for(int k = 0; k < bytes[j].length; k++){
+                    bytes[j][k] = text[i*16 + j*4 + k];
+                }
+            }
+            Block128 curr = new Block128(bytes);
+            blocks.add(curr);
+        }
+        return blocks;
     }
 
     @Override

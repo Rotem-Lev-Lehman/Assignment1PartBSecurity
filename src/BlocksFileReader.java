@@ -16,9 +16,11 @@ public class BlocksFileReader extends MyFileReader {
         try {
             byte[] bytes = Files.readAllBytes(Paths.get(path));
 
+            return Block128.generateBlocks(bytes);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        return null;
     }
 }
